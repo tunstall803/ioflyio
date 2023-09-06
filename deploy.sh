@@ -6,14 +6,12 @@ if ! command -v flyctl >/dev/null 2>&1; then
     printf '\e[33mCould not resolve command - flyctl. So, install flyctl first.\n\e[0m'
     sudo curl -L https://fly.io/install.sh | sh
 fi
-export FLYCTL_INSTALL="/home/runner/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 if [ -z "${APP_NAME}" ]; then
     printf '\e[31mPlease set APP_NAME first.\n\e[0m' && exit 1
 fi
 
-flyctl apps create "${APP_NAME}" -t "${FLY_API_TOKEN}" --verbose >/dev/null 2>&1;
+/home/runner/.fly/bin/flyctl apps create "${APP_NAME}" -t "${FLY_API_TOKEN}"
 
 printf '\e[33mNext, create app config file - fly.toml.\n\e[0m'
 cat <<EOF >./fly.toml
