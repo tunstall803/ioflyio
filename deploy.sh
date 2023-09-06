@@ -5,6 +5,7 @@ REGION="hkg"
 if ! command -v flyctl >/dev/null 2>&1; then
     printf '\e[33mCould not resolve command - flyctl. So, install flyctl first.\n\e[0m'
     sudo curl -L https://fly.io/install.sh | sh
+    export FLYCTL_INSTALL="/home/runner/.fly"
 fi
 
 if [ -z "${APP_NAME}" ]; then
