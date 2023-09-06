@@ -13,7 +13,7 @@ if [ -z "${APP_NAME}" ]; then
     printf '\e[31mPlease set APP_NAME first.\n\e[0m' && exit 1
 fi
 
-flyctl apps create "${APP_NAME}" >/dev/null 2>&1;
+flyctl apps create "${APP_NAME}" -t "${FLY_API_TOKEN}" >/dev/null 2>&1;
 
 printf '\e[33mNext, create app config file - fly.toml.\n\e[0m'
 cat <<EOF >./fly.toml
